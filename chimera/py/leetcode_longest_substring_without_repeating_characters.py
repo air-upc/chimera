@@ -23,16 +23,9 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        ret = 0
-        index = {}
-        sentry = 0
-        for inx, cha in enumerate(s):
-            if cha not in index:
-                ret = max(ret, inx - sentry + 1)
-            else:
-                if sentry > index[cha]:
-                    ret = max(ret, inx - sentry + 1)
-                else:
-                    sentry = index[cha] + 1
-            index[cha] = inx
-        return ret
+        ret, head = 0, 0
+        for inx in range(len(s)):
+            if s[inx] in s[head: inx]:
+                ret = max(ret, inx - head)
+                head = s[:inx].rindex(s[inx]) + 1
+        return max(ret, len(s) - head)
