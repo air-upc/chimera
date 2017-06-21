@@ -1,7 +1,9 @@
 # coding=utf-8
 """
-chimera.leetcode_twosum
-~~~~~~~~~~~~~~~~~~~~~~~
+chimera.leetcode_1
+~~~~~~~~~~~~~~~~~~
+
+Two Sum
 
 Given an array of integers, return indices of the two numbers such that they
 add up to a specific target. You may assume that each input would have exactly
@@ -12,10 +14,9 @@ Example:
     Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
 """
 
-
 class Solution(object):
-    # Change twoSum to two_sum
-    def two_sum(self, nums, target):
+
+    def twoSum(self, nums, target):
         """
         :type nums: List[int]
         :type target: int
