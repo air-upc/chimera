@@ -21,6 +21,7 @@ class ListNode(object):
         self.val = x
         self.next = None
 
+
 class Solution(object):
 
     def deleteDuplicates(self, head):
