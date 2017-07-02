@@ -26,11 +26,11 @@ class Solution(object):
         """
         head, tail = 0, len(nums) - 1
         for inx, num in enumerate(nums):
-            if inx > tail:
-                break
             if num == 2:
                 while tail > inx and nums[tail] == 2:
                     tail -= 1
+                if inx > tail:
+                    break
                 nums[inx], nums[tail] = nums[tail], 2
                 tail -= 1
             if nums[inx] == 0:
