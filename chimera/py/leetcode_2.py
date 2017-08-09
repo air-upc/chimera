@@ -1,7 +1,9 @@
 # coding=utf-8
 """
-chimera.leetcode_add_two_numbers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+chimera.leetcode_2
+~~~~~~~~~~~~~~~~~~
+
+Add Two Numbers
 
 You are given two non-empty linked lists representing two non-negative
 integers. The digits are stored in reverse order and each of their nodes
@@ -14,7 +16,6 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 """
 
-
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
@@ -22,21 +23,19 @@ Output: 7 -> 0 -> 8
 #         self.next = None
 
 class Solution(object):
-    """..note:: not change the param node list here; when the param node list
-    can be changed, we can use the exists ListNode and save lots of resource.
-    """
-    def add_two_numbers(self, l1, l2):
+    def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
         """
-        ret = cur = ListNode(0)
+        ret = node = ListNode(0)
         carry = 0
         while l1 or l2:
-            sum = ((l1 and l1.val) or 0) + ((l2 and l2.val) or 0) + carry
-            node = ListNode(sum % 10)
-            carry = sum / 10
-            l1, l2, cur.next, cur = l1 and l1.next, l2 and l2.next, node, node
-        cur.next = ListNode(carry) if carry else None
+            num = (l1 and l1.val or 0) + (l2 and l2.val or 0) + carry
+            node.next = ListNode(num % 10)
+            carry = num / 10
+            l1, l2, node = l1 and l1.next, l2 and l2.next, node.next
+        if carry:
+            node.next = ListNode(carry)
         return ret.next
