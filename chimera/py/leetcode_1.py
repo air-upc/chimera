@@ -22,10 +22,8 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        storage = {num: index for index, num in enumerate(nums)}
-        for index, num in enumerate(nums):
-            # sup = target - num
-            # if target - num in storage and index != storage[target - num]:
-            #    return [index, storage[sup]]
-            if target - num in storage and index != storage[target - num]:
-                return [index, storage[target - num]]
+        stock = {}
+        for n, num in enumerate(nums):
+            if (target - num) in stock:
+                return [stock[target - num], n]
+            stock[num] = n
